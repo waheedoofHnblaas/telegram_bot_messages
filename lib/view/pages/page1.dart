@@ -1,9 +1,6 @@
 import 'package:animations/controller/page1_cont.dart';
 import 'package:animations/core/class/statusrequest.dart';
-import 'package:animations/core/constant/approutes.dart';
-import 'package:animations/model/messageModel.dart';
 import 'package:animations/view/widgets/appMessageCard.dart';
-import 'package:animations/view/widgets/image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,18 +12,27 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Get.theme.cardColor,
+        child: GetBuilder<Page1_Controller>(builder: (c) {
+          return IconButton(
+            onPressed: () async {
+              await c.getData();
+            },
+            icon: Icon(
+              Icons.refresh_sharp,
+              size: 30,
+              color: Get.theme.scaffoldBackgroundColor,
+            ),
+          );
+        }),
+      ),
       appBar: AppBar(
         title: const Text('HOME'),
         centerTitle: true,
-        actions: [
-          GetBuilder<Page1_Controller>(builder: (c) {
-            return IconButton(
-                onPressed: () async {
-                  await c.getData();
-                },
-                icon: const Icon(Icons.refresh));
-          })
-        ],
+        actions: [],
       ),
       body: Center(
         child: GetBuilder<Page1_Controller>(
@@ -50,5 +56,4 @@ class Page1 extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -1,5 +1,6 @@
 import 'package:animations/controller/data_cont.dart';
 import 'package:animations/view/widgets/cach_image_data.dart';
+import 'package:animations/view/widgets/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -14,22 +15,7 @@ class DataPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('DATA'),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 18.0),
-            child: InkWell(
-              onTap: () {
-                controller.toUserData(
-                    controller.message.keys.elementAt(0).message!.from!);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Text(
-                      controller.message.keys.elementAt(0).message!.from!.username!),
-                ),
-              ),
-            ),
-          ),
+          UserDataWidget(controller: controller),
         ],
       ),
       body: Center(
@@ -43,22 +29,33 @@ class DataPage extends StatelessWidget {
                 children: [
                   AppCachImageData(
                       imageUrl: controller.message.values.elementAt(0)),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Get.theme.backgroundColor,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(22))),
-                    margin: const EdgeInsets.all(20),
-                    padding: const EdgeInsets.all(20),
-                    child: Text(
-                      controller.message.keys.elementAt(0).message!.caption!,
-                      style: const TextStyle(fontSize: 33),
-                    ),
-                  ),
+                  productNameWidget(controller),
                 ],
               );
             }
           },
+        ),
+      ),
+    );
+  }
+
+  Container productNameWidget(DataController controller) {
+    return Container(
+      width: Get.width / 1.5,
+      decoration: BoxDecoration(
+          color: Get.theme.primaryColor,
+          borderRadius: const BorderRadius.all(Radius.circular(22))),
+      margin: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
+      child: Center(
+        child: Text(
+          controller.message.keys.elementAt(0).message!.caption!,
+          textAlign: TextAlign.center,
+
+          style: TextStyle(
+            fontSize: 28,
+            color: Get.theme.scaffoldBackgroundColor,
+          ),
         ),
       ),
     );

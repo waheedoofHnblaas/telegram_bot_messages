@@ -4,7 +4,7 @@ import 'package:animations/core/class/statusrequest.dart';
 import 'package:animations/model/messageModel.dart';
 import 'package:animations/view/widgets/appMessageCard.dart';
 import 'package:animations/view/widgets/cach_image_data.dart';
-import 'package:animations/view/widgets/image_card.dart';
+import 'package:animations/view/widgets/user_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,30 +21,7 @@ class UserData_Page extends StatelessWidget {
           builder: (controller11) {
             return controller.statusRequest == StatusRequest.loading
                 ? const Text('...')
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('${controller.user.username}'),
-                      Card(
-                        color: Colors.grey.shade200,
-                        elevation: 0,
-                        child: Row(
-                          children: [
-                            controller.scrollController.offset > 21
-                                ? Text('  ${controller.user.firstName}')
-                                : Container(),
-                            const SizedBox(width: 10,),
-                            controller.scrollController.offset > 400
-                                ? AppCachImage(imageUrl: controller.urlPath)
-                                : Container(
-                                    width: 44,
-                                    height: 44,
-                                  ),
-                          ],
-                        ),
-                      )
-                    ],
-                  );
+                : UserWidget(controller: controller);
           },
         ),
       ),
@@ -96,3 +73,4 @@ class UserData_Page extends StatelessWidget {
     );
   }
 }
+

@@ -56,7 +56,8 @@ class Page1_Controller extends GetxController {
         }
         for (var element in msgs) {
           var ele = MessageModel.fromJson(element);
-          // print(ele);
+           print('========== getData ===========');
+           print(element);
           if (ele.message != null) {
             if (ele.message!.caption != null) {
               if (ele.message!.document != null) {
@@ -71,6 +72,12 @@ class Page1_Controller extends GetxController {
                     ele.message!.photo,
                   )
                 });
+              }else if(ele.message!.video != null){
+                msgsList.addAll({
+                  ele: await getImage(
+                    ele.message!.video!.fileId,
+                  )
+                });
               }
             }
           }
@@ -81,17 +88,17 @@ class Page1_Controller extends GetxController {
           titleStyle: Get.textTheme.headline1,
           middleText: 'no data available',
           middleTextStyle: Get.textTheme.bodyText1,
-          backgroundColor: Get.theme.backgroundColor,
+          backgroundColor: Get.theme.scaffoldBackgroundColor,
         );
         statusRequest = StatusRequest.failure;
       }
     }
     Get.showSnackbar(GetSnackBar(
       backgroundColor: Get.theme.backgroundColor,
-      messageText: const Center(
+      messageText:  Center(
           child: Text(
         'done update',
-        style: TextStyle(color: Colors.greenAccent),
+        style: TextStyle(color: Get.theme.primaryColor),
       )),
       duration: const Duration(
         seconds: 2,

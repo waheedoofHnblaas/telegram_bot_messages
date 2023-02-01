@@ -11,15 +11,17 @@ class AppCachImageData extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageBuilder: (context, imageProvider) => Container(
-        width: Get.width/1.5,
-        height: Get.width/1.1,
+        width: Get.width / 1.5,
+        height: Get.width / 1.5,
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(33)),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(33),
+          ),
           image: DecorationImage(
             image: imageProvider,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
             colorFilter:
-            const ColorFilter.mode(Colors.white, BlendMode.colorBurn),
+                const ColorFilter.mode(Colors.white, BlendMode.colorBurn),
           ),
         ),
       ),

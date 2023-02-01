@@ -20,20 +20,24 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Cairo',
+        cardColor: const Color(0xFF5E0000),
         focusColor: Colors.blueAccent,
         hoverColor: Colors.blueAccent,
-        backgroundColor: Colors.white10,
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFFFB5B5),
+        primaryColor: const Color(0xFF7C0202),
+        scaffoldBackgroundColor: const Color(0xFFFFB5B5),
         appBarTheme: const AppBarTheme(
+
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: const Color(0xFFFFB5B5),
           foregroundColor: Colors.black,
         ),
         primarySwatch: Colors.blue,
       ),
       getPages: routes,
+      locale: const Locale('ar'),
       initialBinding: InitialBinding(),
     );
   }

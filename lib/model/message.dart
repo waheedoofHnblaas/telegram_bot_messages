@@ -1,6 +1,7 @@
 import 'package:animations/model/chat.dart';
 import 'package:animations/model/document.dart';
 import 'package:animations/model/form.dart';
+import 'package:animations/model/vedio.dart';
 
 class Message {
   int? messageId;
@@ -8,6 +9,7 @@ class Message {
   Chat? chat;
   int? date;
   String? photo;
+  Video? video;
   Document? document;
   String? caption;
 
@@ -27,6 +29,7 @@ class Message {
     chat = json['chat'] != null ? Chat.fromJson(json['chat']) : null;
     date = json['date'];
     photo = json['photo'] != null ? json['photo'][1]['file_id'] : null;
+    video = json['video'] != null ? Video.fromJson(json['video']) : null;
     document =
         json['document'] != null ? Document.fromJson(json['document']) : null;
     caption = json['caption'];
